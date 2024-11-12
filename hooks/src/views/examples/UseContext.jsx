@@ -1,16 +1,20 @@
 import React, { useContext } from "react";
 import PageTitle from "../../components/layout/PageTitle";
 import DataContext from "../../data/DataContext";
+import SectionTitle from "../../components/layout/SectionTitle";
+import { AppContext } from "../../data/Store";
 
 const UseContext = (props) => {
     const context = useContext(DataContext);
 
-    function setNumber(delta) {
+    function addNumber(delta) {
         context.setState({
             ...context.state,
             number: context.state.number + delta,
         });
     }
+
+    const { number, text, setNumber, setText } = useContext(AppContext);
 
     return (
         <div className="UseContext">
@@ -23,11 +27,29 @@ const UseContext = (props) => {
                 <span className="text">{context.state.text}</span>
                 <span className="text">{context.state.number}</span>
                 <div>
-                    <button className="btn" onClick={() => setNumber(+1)}>
+                    <button className="btn" onClick={() => addNumber(+1)}>
                         +1
                     </button>
-                    <button className="btn" onClick={() => setNumber(-1)}>
+                    <button className="btn" onClick={() => addNumber(-1)}>
                         -1
+                    </button>
+                </div>
+            </div>
+            <div className="center">
+                <span className="text">{text}</span>
+                <span className="text">{number}</span>
+                <div>
+                    <button
+                        className="btn"
+                        onClick={() => setNumber(number - 1)}
+                    >
+                        -1
+                    </button>
+                    <button
+                        className="btn"
+                        onClick={() => setNumber(number + 1)}
+                    >
+                        +1
                     </button>
                 </div>
             </div>
