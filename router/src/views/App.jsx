@@ -1,17 +1,17 @@
 import "./App.css";
 
 import React from "react";
-import { BrowserRouter as Router} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import Content from "../components/layout/Content";
 import Menu from "../components/layout/Menu";
 
 const App = (props) => (
     <div className="App">
-        <Router>
+        <BrowserRouter>
             <Menu />
             <Content />
-        </Router>
+        </BrowserRouter>
     </div>
 );
 export default App;
